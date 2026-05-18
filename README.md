@@ -27,7 +27,20 @@ http://localhost:3000/
 ### Frontend
 
 cd frontend
+npm install
+npm run dev
 
+### Run frontend
+
+```bash
+npm run dev
+```
+
+### Frontend URL
+
+```text
+http://localhost:3001/
+```
 
 ## Stack
 - Node.js + Express + Morgan + Nodemon
