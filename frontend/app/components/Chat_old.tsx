@@ -1,6 +1,21 @@
 'use client'
+import { useState } from "react"
+
+type Message = {
+  text: string
+}
 
 export default function ChatContainer() {
+  const [input, setInput] = useState("")
+  const [messages, setMessages] = useState<Message[]>([]) 
+
+  const sendMessage = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+  
+    setMessages(prev => [...prev, { text: input }])
+    setInput("")
+  }
+
   return (
     <section className="flex min-h-screen items-center justify-center bg-[#072769]">
       <div className="w-full max-w-2xl rounded-2xl bg-[#0b347f] p-8 text-white shadow-xl">
@@ -23,7 +38,13 @@ export default function ChatContainer() {
           Use one of the most common prompts below or ask your own question
         </p>
 
-        <form className="mt-8 flex items-center gap-3 rounded-full border border-[#1d4c9b] px-4 py-3">
+        {messages.map((msg, i) => (
+          <div key={i}>{msg.text}</div>
+        ))}        
+
+        <form 
+          onSubmit={sendMessage}
+          className="mt-8 flex items-center gap-3 rounded-full border border-[#1d4c9b] px-4 py-3">
 
           <button
             type="button"
@@ -33,9 +54,11 @@ export default function ChatContainer() {
           </button>
 
           <input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
             type="text"
             placeholder="Ask whatever you want"
-            className="flex-1 outline-none text-black placeholder:text-[#98adce]"
+            className="flex-1 outline-none text-white placeholder:text-[#98adce]"
           />
 
           <button

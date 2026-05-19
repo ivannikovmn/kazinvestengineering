@@ -44,4 +44,5 @@ http://localhost:3001/
 
 ## Stack
 - Node.js + Express + Morgan + Nodemon
-- React
+- Next.js + React + TypeScript
+- Tailwind CSS

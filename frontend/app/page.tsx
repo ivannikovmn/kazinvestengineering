@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Сhat from "./components/Chat";
+import Chat from "./components/ChatContainer";
 
 export default function Home() {
   return (    
     <div>      
-        <Сhat />        
+        <Chat />        
     </div>
   );
 }
