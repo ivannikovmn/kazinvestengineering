@@ -1,17 +1,30 @@
 type Props = {
-    input: string
-    setInput: (value: string) => void
-    sendMessage: (e: React.FormEvent<HTMLFormElement>) => void
-  }
+  input: string
+  setInput: (value: string) => void
+  sendMessage: (e: React.FormEvent<HTMLFormElement>) => void
+  startVoiceInput: () => void
+  isListening: boolean
+}
   
-  export default function ChatInput({ input, setInput, sendMessage }: Props) {
+  export default function ChatInput({
+    input,
+    setInput,
+    sendMessage,
+    startVoiceInput,
+    isListening
+  }: Props) {
+    
     return (
       <form
         onSubmit={sendMessage}
         className="mt-8 flex items-center gap-3 rounded-full border border-[#1d4c9b] px-4 py-3"
       >
-        <button type="button" className="text-[#1d4c9b]">
-          🎙️
+        <button
+          type="button"
+          onClick={startVoiceInput}
+          className="text-[#1d4c9b]"
+        >
+          {isListening ? "🎙️ recording" : "🎙️"}
         </button>
   
         <input
